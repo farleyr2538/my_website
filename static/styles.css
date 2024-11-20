@@ -1,0 +1,124 @@
+.header {
+    margin-top: 25%;
+    margin-bottom: 25%;
+    white-space: pre;
+    font-size: 64px;
+    font-weight: 900;
+    font-family: Arial, Helvetica, serif;
+    letter-spacing: -0.06em;
+}
+
+/* blueprint lines
+div {
+    outline: 1px;
+    outline-style: dashed;
+    outline-color: blue;
+}
+ */
+
+button {
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+a {
+    cursor: pointer;
+}
+
+#alternate {
+    font-size: 12px;
+}
+
+.content {
+    color: white;
+    position: fixed;
+    top: 0%;
+    /*bottom: -100%;*/
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-width: 720px;
+    margin: auto;
+    /* height: 400px; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    transition: background-color 0.5s ease;
+}
+
+.content.show {
+    animation: slideUp 0.5s ease forwards;
+}
+
+.content.hide {
+    animation: slideDown 0.5s ease-out;
+}
+
+.headline_buttons {
+    border-radius: 10px;
+}
+
+.techStack {
+    background-color: rgba(255, 255, 255, 0.25);
+    padding: 6px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    font-size: smaller;
+}
+
+.techStackGrid {
+    display: grid;
+    justify-items: end;
+    grid-template-columns: repeat(auto-fit, auto);
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+@keyframes slideUp {
+    0% {
+        /*bottom: -100%;*/
+        top: 100%;
+        opacity: 0;
+    }
+    100% {
+        /*bottom: 0%;*/
+        top: 50px;
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        /*bottom: 0%;*/
+        top: 50px;
+        opacity: 1;
+    }
+    100% {
+        /*bottom: -100%;*/
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+.web {
+    background-color: #F15353;
+}
+
+.ios {
+    background-color: #5ED062;
+}
+
+.data {
+    background-color: #5487EC;
+}
+
+.about {
+    background-color: #F6E548;
+    color: black;
+}
