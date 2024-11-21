@@ -57,7 +57,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // add event listener
             button.addEventListener('click', function(event) {
-                        
+
+                let mode = event.target.innerText.toLowerCase(); // desired mode
+
                 // remove any existing content
                 introRow.innerHTML = "";
                 title.innerHTML = "";
@@ -75,12 +77,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 })
         
+                // add desired color class
+                content.classList.add(mode);
+                console.log("class added: " + mode);
+
                 // remove 'hide', if present
                 if (content.classList.contains('hide')) {
                     content.classList.remove('hide');
                 }
-        
-                let mode = event.target.innerText.toLowerCase(); // desired mode
         
                 // set header
                 title.innerText = event.target.innerText;
@@ -218,10 +222,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     })
                 }
-
-                // change the color
-                content.classList.add(mode);
-                console.log("class added: " + mode);
         
                 // if content is not showing, then show it
                 if (!content.classList.contains('show')) {

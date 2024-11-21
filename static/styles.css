@@ -1,11 +1,15 @@
+@import url('https://fonts.vercel.com/css2?family=geist');
+
 .header {
     margin-top: 25%;
     margin-bottom: 25%;
     white-space: pre;
     font-size: 64px;
-    font-weight: 900;
-    font-family: Arial, Helvetica, serif;
-    letter-spacing: -0.06em;
+    letter-spacing: -0.050em; 
+    line-height: 0.75; 
+    text-transform: none; 
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* blueprint lines
@@ -110,15 +114,31 @@ a {
     background-color: #F15353;
 }
 
+.web-button:hover {
+    color: #F15353;
+}
+
 .ios {
     background-color: #5ED062;
+}
+
+.ios-button:hover {
+    color: #5ED062;
 }
 
 .data {
     background-color: #5487EC;
 }
 
+.data-button:hover {
+    color: #5487EC;
+}
+
 .about {
     background-color: #F6E548;
     color: black;
+}
+
+.about-button:hover {
+    color: #F6E548;
 }
