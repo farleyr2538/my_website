@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // show header
             const header = document.getElementById('header');
             header.hidden = false;
+            const credit = document.getElementById('credit');
+            credit.hidden = false;
 
             // change content class to 'hide'
             closeButton.parentElement.parentElement.parentElement.classList.remove('show');
@@ -231,6 +233,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 // hide title
                 const header = document.getElementById('header');
                 header.hidden = true;
+                const credit = document.getElementById('credit');
+                credit.hidden = true;
             })
         })
     }
