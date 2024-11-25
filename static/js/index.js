@@ -285,6 +285,11 @@ const data = {
         ]   
     },
     about : {
-        intro: ["I am interested in a wide variety of topics, including:"]
+        intro: ["I started my journey in Computer Science during lockdown, when I went through Apple's Swift Playgrounds. I liked it, but was not sure how it was relevant to developing software",
+            "Then, in 2022-23, I completed Harvard's Introduction to Computer Science (CS50) course online. This was thorough and comprehensive introduction to the important concepts, like algorithms and memory management. Learning in C provided a fantastic foundational knowledge from which  to build. It also introduced me to Python, SQL, HTML, CSS, JavaScript, Flask, and Jinja.",
+            "I then further developed my knowedge of software development specifically, learning Web Development and starting to learn Swift.",
+            "In August to November 2024, I completed Le Wagon's Data Analytics full-time Bootcamp. This was a fantastic insight into the world of data. I refined my SQL skills, and further developed my Python, in particular the Pandas library and SciKit Learn for ML.",
+            "Outside of Computer Science, I am interested in a wide variety of topics, including:"
+        ]
     }
 }
