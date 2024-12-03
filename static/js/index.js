@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (project['techStack']) {
                             // create a second column
                             const projectColRight = document.createElement('div')
-                            projectColRight.classList.add('col-auto') // for the tech stack
+                            projectColRight.classList.add('col-4') // for the tech stack
 
                             // create a row for the tech stack title and tech stack
                             const techTitleRow = document.createElement('div')
