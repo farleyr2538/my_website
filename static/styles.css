@@ -17,8 +17,8 @@ div {
     outline: 1px;
     outline-style: dashed;
     outline-color: blue;
-}
- */
+} */
+
 
 button {
     padding-top: 5%;
@@ -35,18 +35,15 @@ a {
 
 .content {
     color: white;
-    position: fixed;
-    top: 0%;
-    /*bottom: -100%;*/
+    position: fixed; 
     top: 100%;
-    left: 0;
-    right: 0;
+    overflow-y: auto;
+    max-height: calc(100vh - 100px);
+    height: fit-content;
     max-width: 720px;
-    margin: auto;
-    /* height: 400px; */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    opacity: 0;
+    opacity: 0%;
     transition: opacity 0.5s ease-in-out;
     transition: background-color 0.5s ease;
 }
@@ -82,17 +79,16 @@ a {
     width: 40px;
     height: 40px;
     cursor: pointer;
+    margin-right: 5px;
 }
 
 @keyframes slideUp {
     0% {
-        /*bottom: -100%;*/
         top: 100%;
         opacity: 0;
     }
     100% {
-        /*bottom: 0%;*/
-        top: 50px;
+        top: 65px;
         opacity: 1;
     }
 }

@@ -11,7 +11,7 @@
         <link href="static/styles.css" rel="stylesheet">
 
         <title>Rob</title>
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
     </head>
     <body>
         <!--JS link-->
@@ -20,12 +20,19 @@
         <!--Bootstrap-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         
-        <nav class="navbar">
-            <div class="container" style="margin-right: 40%; margin-left: 40%;">
-                <a name="buttons" class="nav-link web-button">web</a>
-                <a name="buttons" class="nav-link ios-button">iOS</a>
-                <a name="buttons" class="nav-link data-button">data</a>
-                <a name="buttons" class="nav-link about-button">about</a>
+        <nav class="navbar navbar-expand-sm bg-light-primary my-2">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#idOfMainContent" aria-controls="idOfMainContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center bg-light-subtle p-2" id="idOfMainContent" style="z-index: 1; border-radius: 10px; opacity: 95%;">
+                    <div class="navbar-nav">
+                        <a name="buttons" class="nav-link web-button">web</a>
+                        <a name="buttons" class="nav-link ios-button">iOS</a>
+                        <a name="buttons" class="nav-link data-button">data</a>
+                        <a name="buttons" class="nav-link about-button">about</a>
+                    </div>
+                </div>
             </div>
         </nav>
 
@@ -36,20 +43,20 @@
                 </div>
             </div>
         </div>
-        <div class="container-sm p-4 content" id="content">
+        <div class="content p-4 mx-2 my-2" id="content">
             <div class="row justify-content-center">
                 <div class="col-11">
                     <h1 class="display-5" id="title"></h1>
                 </div>
                 <div class="col-1 align-content-start justify-content-end">
-                    <svg id="close" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg style="position:relative" id="close" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"/>
                         <line x1="8" y1="8" x2="16" y2="16"/>
                         <line x1="8" y1="16" x2="16" y2="8"/>
                     </svg>
                 </div>
             </div>
-            <div class="row justify-content-center py-3" id="introRow">
+            <div class="row justify-content-center" id="introRow">
                 <!-- intro col goes here -->
             </div>
         </div>

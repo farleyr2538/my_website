@@ -1,8 +1,3 @@
-
-
-
-// tabs logic
-
 document.addEventListener('DOMContentLoaded', function() {
     
     const typingSpeed = 80;
@@ -47,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // change content class to 'hide'
             closeButton.parentElement.parentElement.parentElement.classList.remove('show');
             closeButton.parentElement.parentElement.parentElement.classList.add('hide');
-            console.log('Class list after close: ' + content.classList);
         })
     }
     
@@ -106,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 if (mode == "about") {
-                    const interests = ["start-ups", "economics", "UK politics"]
+                    const interests = ["start-ups", "economics", "UK politics", "housing & planning"]
                     const bulletPoints = document.createElement('ul')
                     interests.forEach((interest) => {
                         const bulletPoint = document.createElement('li')
@@ -134,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         titleRow.classList.add('row')
                         const titleCol = document.createElement('div')
                         titleCol.classList.add('col-auto')
-                        
                         
                         // add a projectTitle header
                         const titleElement = document.createElement('h4')
@@ -238,6 +231,20 @@ document.addEventListener('DOMContentLoaded', function() {
             })
         })
     }
+
+    // Add this code to close mobile navbar when a link is clicked
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navbarCollapse = document.getElementById('idOfMainContent');
+    const bsCollapse = new bootstrap.Collapse(navbarCollapse, {toggle: false});
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Check if the window width is less than Bootstrap's breakpoint for small devices
+            if (window.innerWidth < 576 && navbarCollapse.classList.contains('show')) {
+                bsCollapse.hide();
+            }
+        });
+    });
 });
     
 const data = {
@@ -250,7 +257,7 @@ const data = {
                 techStack : ["Python", "Flask", "Jinja", "Postgres", "Heroku", "RESTful API", "JavaScript", "HTML", "CSS"],
                 text : [
                     "While working as an estate agent, I noticed that the information that tenants had about their property and their landlord would be immensely valuable to prospective tenants",
-                    "So I created a website called Roof which allowed existing tenants to review their landlords. It can be found at www.rooflondon.uk",
+                    "So I created a website called Roof which allowed existing tenants to review their landlords.",
                 ],
                 link : "https://www.rooflondon.uk"
             }
@@ -285,10 +292,10 @@ const data = {
         ]   
     },
     about : {
-        intro: ["I started my journey in Computer Science during lockdown, when I went through Apple's Swift Playgrounds. I liked it, but was not sure how it was relevant to developing software",
-            "Then, in 2022-23, I completed Harvard's Introduction to Computer Science (CS50) course online. This was thorough and comprehensive introduction to the important concepts, like algorithms and memory management. Learning in C provided a fantastic foundational knowledge from which  to build. It also introduced me to Python, SQL, HTML, CSS, JavaScript, Flask, and Jinja.",
-            "I then further developed my knowedge of software development specifically, learning Web Development and starting to learn Swift.",
-            "In August to November 2024, I completed Le Wagon's Data Analytics full-time Bootcamp. This was a fantastic insight into the world of data. I refined my SQL skills, and further developed my Python, in particular the Pandas library and SciKit Learn for ML.",
+        intro: ["I started my journey in Computer Science during lockdown, when I went through Apple's Swift Playgrounds.",
+            "Then, in 2022-23, I completed Harvard's Introduction to Computer Science (CS50) course online. Learning in C provided a fantastic to core concepts like algorithms and memory management. It also introduced me to Python, SQL, HTML, CSS, JavaScript, Flask, and Jinja.",
+            "Afterwards, I continued to develop my knowledge of software development specifically, learning Web Development and starting to learn Swift.",
+            "In August to November 2024, I completed Le Wagon's full-time Data Analytics Bootcamp. This further refined my SQL and Python, in particular the Pandas library and SciKit Learn for ML.",
             "Outside of Computer Science, I am interested in a wide variety of topics, including:"
         ]
     }
