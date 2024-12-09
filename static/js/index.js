@@ -1,3 +1,9 @@
+function createDiv([divType]) {
+    const newDiv = document.createElement('div');
+    newDiv.classList.add(divType);
+    return newDiv;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     
     const typingSpeed = 80;
@@ -26,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // identify container elements
     let content = document.getElementById('content');
+    let background = document.getElementById('content');
     let title = document.getElementById('title');
     let introRow = document.getElementById('introRow');
 
@@ -54,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // add event listener
             button.addEventListener('click', function(event) {
 
-                let mode = event.target.innerText.toLowerCase(); // desired mode
+                let mode = event.target.innerText.toLowerCase(); // desired mode (eg. "ios" or "web")
 
                 // remove any existing content
                 introRow.innerHTML = "";
@@ -67,14 +74,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // remove any existing colour classes
                 sections.forEach((section) => {
-                    if (content.classList.contains(section)) {
-                        content.classList.remove(section);
+                    if (background.classList.contains(section)) {
+                        background.classList.remove(section);
                         console.log("class removed: " + section)
                     }
                 })
         
                 // add desired color class
-                content.classList.add(mode);
+                background.classList.add(mode);
                 console.log("class added: " + mode);
 
                 // remove 'hide', if present
@@ -98,17 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         introCol.append(introElement);
                     })
                 }
-
-                if (mode == "about") {
-                    const interests = ["start-ups", "economics", "UK politics", "housing & planning"]
-                    const bulletPoints = document.createElement('ul')
-                    interests.forEach((interest) => {
-                        const bulletPoint = document.createElement('li')
-                        bulletPoint.innerText = interest;
-                        bulletPoints.append(bulletPoint)
-                    })
-                    introCol.append(bulletPoints)
-                }
                 
                 introRow.append(introCol)
                 
@@ -118,18 +114,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     // set projects
                     data[mode]['projects'].forEach((project) => {
                         // create structure
-                        const projectRow = document.createElement('div')
-                        projectRow.classList.add('row', 'justify-content-between')
-                        projectRow.setAttribute('name', 'projectRow')
-                        const projectColLeft = document.createElement('div') // for the title and text
-                        projectColLeft.classList.add('col-8') 
-
                         const titleRow = document.createElement('div')
-                        titleRow.classList.add('row')
+                        titleRow.classList.add('row', 'd-flex', 'justify-content-center')
+                        titleRow.setAttribute('name', 'projectRow')
                         const titleCol = document.createElement('div')
-                        titleCol.classList.add('col-auto')
-                        
-                        // add a projectTitle header
+                        titleCol.classList.add('col')
                         const titleElement = document.createElement('h4')
                         titleElement.innerText = project['title']
                         titleCol.append(titleElement)
@@ -137,10 +126,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
                         if (project['link']) {                        
                             const linkCol = document.createElement('div')
-                            linkCol.classList.add('icon')
+                            linkCol.classList.add('col-1')
                             const linkIcon = document.createElement('span')
                             linkIcon.innerHTML = `
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <!-- First chain link -->
                                     <path 
                                         d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" 
@@ -168,25 +157,31 @@ document.addEventListener('DOMContentLoaded', function() {
                             titleRow.append(linkCol)
                         }
                         
-                        projectColLeft.append(titleRow)
+                        background.append(titleRow)
+
+                        const contentRow = document.createElement('div')
+                        contentRow.setAttribute('name', 'projectRow')
+                        contentRow.classList.add('row', 'd-flex', 'justify-content-center')
+                        const textCol = document.createElement('div')
+                        textCol.classList.add('col')
 
                         // iterate through project paragraphs, creating a <p> for each one
                         project['text'].forEach((paragraph) => {
                             const para = document.createElement('p')
                             para.innerText = paragraph
-                            projectColLeft.append(para)
+                            textCol.append(para)
                         })
 
-                        projectRow.append(projectColLeft)
+                        contentRow.append(textCol)
 
                         if (project['techStack']) {
                             // create a second column
                             const projectColRight = document.createElement('div')
-                            projectColRight.classList.add('col-4') // for the tech stack
+                            projectColRight.classList.add('col') // for the tech stack
 
                             // create a row for the tech stack title and tech stack
                             const techTitleRow = document.createElement('div')
-                            techTitleRow.classList.add('row')
+                            techTitleRow.classList.add('row', 'd-flex', 'justify-content-center')
                             const techTitleCol = document.createElement('div')
                             techTitleCol.classList.add('col')
                             
@@ -197,12 +192,12 @@ document.addEventListener('DOMContentLoaded', function() {
                             techTitleRow.append(techTitleCol)
 
                             const techStackRow = document.createElement('div')
-                            techStackRow.classList.add('techStackGrid')
+                            techStackRow.classList.add('row', 'justify-content-end', 'row-cols-auto')
                             
                             // for each tech in the stack, add a col to the techStackRow
                             project['techStack'].forEach((tech) => {
                                 const techElement = document.createElement('div')
-                                techElement.classList.add('techStack')
+                                techElement.classList.add('col', 'techStack')
                                 techElement.innerText = tech;
                                 techStackRow.append(techElement)
                             })
@@ -210,10 +205,10 @@ document.addEventListener('DOMContentLoaded', function() {
                             projectColRight.append(techTitleRow)
                             projectColRight.append(techStackRow)
 
-                            projectRow.append(projectColRight)
+                            contentRow.append(projectColRight)
                         }
 
-                        content.append(projectRow)
+                        background.append(contentRow)
 
                     })
                 }
@@ -292,11 +287,11 @@ const data = {
         ]   
     },
     about : {
-        intro: ["I started my journey in Computer Science during lockdown, when I went through Apple's Swift Playgrounds.",
-            "Then, in 2022-23, I completed Harvard's Introduction to Computer Science (CS50) course online. Learning in C provided a fantastic to core concepts like algorithms and memory management. It also introduced me to Python, SQL, HTML, CSS, JavaScript, Flask, and Jinja.",
+        intro: [
+            "I started my journey in Computer Science during lockdown, when I went through Apple's Swift Playgrounds.",
             "Afterwards, I continued to develop my knowledge of software development specifically, learning Web Development and starting to learn Swift.",
             "In August to November 2024, I completed Le Wagon's full-time Data Analytics Bootcamp. This further refined my SQL and Python, in particular the Pandas library and SciKit Learn for ML.",
-            "Outside of Computer Science, I am interested in a wide variety of topics, including:"
+            "Outside of Computer Science, I am interested in a wide variety of topics, including economics, politics, and housing."
         ]
     }
 }
