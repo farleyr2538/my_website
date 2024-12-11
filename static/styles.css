@@ -18,7 +18,7 @@ div {
     outline-style: dashed;
     outline-color: blue;
 } 
-    */
+*/
 
 button {
     padding-top: 5%;
@@ -33,27 +33,78 @@ a {
     font-size: 12px;
 }
 
-
 .content {
+    position: absolute;
+    will-change: transform, opacity, background-color;
     color: white;
-    opacity: 0%;
+    opacity: 0;
     border-radius: 10px;
-    top: 110%;
     overflow-y: auto;
     max-height: calc(100vh - 100px);
+    max-width: 720px;
+
+    top: 95px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    
+    /**/
+
     height: fit-content;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: opacity 0.5s ease-in-out;
-    transition: background-color 0.5s ease;
+    justify-self: center;
+    transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.5s ease;
 }
 
 .content.show {
-    animation: slideUp 0.5s ease forwards;
+    transform: translate(-50%, -20px);
+    opacity: 1;
 }
 
 .content.hide {
-    animation: slideDown 0.5s ease-out;
+    transform: translate(-50%, 20px);
+    opacity: 0;
 }
+
+/*
+@keyframes slideUp {
+    0% {
+        top: 95px;
+        opacity: 0;
+    }
+    100% {
+        top: 75px;
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        top: 75px;
+        opacity: 1;
+    }
+    100% {
+        top: 95px;
+        opacity: 0;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .content {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media (max-width: 767px) {
+    .content {
+        top: 95px;
+        left: auto;
+        transform: translateX(-50%);
+    }
+}
+*/
 
 .headline_buttons {
     border-radius: 10px;
@@ -73,28 +124,6 @@ a {
     height: 20px;
     cursor: pointer;
     z-index: 1;
-}
-
-@keyframes slideUp {
-    0% {
-        top: 110%;
-        opacity: 0;
-    }
-    100% {
-        top: 75px;
-        opacity: 1;
-    }
-}
-
-@keyframes slideDown {
-    0% {
-        top: 75px;
-        opacity: 1;
-    }
-    100% {
-        top: 110%;
-        opacity: 0;
-    }
 }
 
 .web {

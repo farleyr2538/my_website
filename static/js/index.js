@@ -4,7 +4,11 @@ function createDiv([divType]) {
     return newDiv;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+async function delay(ms) {
+    await new Promise(resolve => setTimeout(resolve, ms));
+}
+
+document.addEventListener('DOMContentLoaded', async function() {
     
     const typingSpeed = 80;
     const initialDelay = 500;
@@ -46,9 +50,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const credit = document.getElementById('credit');
             credit.hidden = false;
 
+            // remove any existing colour classes
+            sections.forEach((section) => {
+                if (background.classList.contains(section)) {
+                    background.classList.remove(section);
+                    console.log("class removed: " + section)
+                }
+            })
+
             // change content class to 'hide'
-            closeButton.parentElement.parentElement.parentElement.classList.remove('show');
-            closeButton.parentElement.parentElement.parentElement.classList.add('hide');
+            content.classList.remove('show');
+            content.classList.add('hide');
+            console.log("content class: ", content.className)
         })
     }
     
@@ -59,7 +72,19 @@ document.addEventListener('DOMContentLoaded', function() {
         buttons.forEach((button) => {
 
             // add event listener
-            button.addEventListener('click', function(event) {
+            button.addEventListener('click', async function(event) {
+
+                // if 'content' is not showing, take a second to hide main content
+                if (!content.classList.contains('show')) {
+                    // hide title
+                    const header = document.getElementById('header');
+                    header.hidden = true;
+                    const credit = document.getElementById('credit');
+                    credit.hidden = true;
+
+                    // delay by .25 of a second
+                    await delay(250);
+                }
 
                 let mode = event.target.innerText.toLowerCase(); // desired mode (eg. "ios" or "web")
 
@@ -218,23 +243,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     content.classList.add('show');
                 }  
                 
-                // hide title
-                const header = document.getElementById('header');
-                header.hidden = true;
-                const credit = document.getElementById('credit');
-                credit.hidden = true;
             })
         })
     }
 
-    // Add this code to close mobile navbar when a link is clicked
+    // close mobile navbar when a link is clicked
     const navLinks = document.querySelectorAll('.nav-link');
     const navbarCollapse = document.getElementById('idOfMainContent');
     const bsCollapse = new bootstrap.Collapse(navbarCollapse, {toggle: false});
     
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            // Check if the window width is less than Bootstrap's breakpoint for small devices
+            // check if the window width is less than Bootstrap's breakpoint for small devices
             if (window.innerWidth < 576 && navbarCollapse.classList.contains('show')) {
                 bsCollapse.hide();
             }
