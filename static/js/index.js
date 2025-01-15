@@ -140,10 +140,10 @@ document.addEventListener('DOMContentLoaded', async function() {
                     data[mode]['projects'].forEach((project) => {
                         // create structure
                         const titleRow = document.createElement('div')
-                        titleRow.classList.add('row', 'd-flex', 'justify-content-center')
+                        titleRow.classList.add('row', 'd-flex', 'justify-content-start')
                         titleRow.setAttribute('name', 'projectRow')
                         const titleCol = document.createElement('div')
-                        titleCol.classList.add('col')
+                        titleCol.classList.add('col-5')
                         const titleElement = document.createElement('h4')
                         titleElement.innerText = project['title']
                         titleCol.append(titleElement)
