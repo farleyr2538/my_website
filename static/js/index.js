@@ -1,149 +1,177 @@
-function createDiv([divType]) {
-    const newDiv = document.createElement('div');
-    newDiv.classList.add(divType);
-    return newDiv;
-}
-
 async function delay(ms) {
     await new Promise(resolve => setTimeout(resolve, ms));
 }
 
+
 document.addEventListener('DOMContentLoaded', async function() {
     
-    const typingSpeed = 80;
-    const initialDelay = 500;
-    const text = "Rob Farley";
-    let index = 0;
-
     // find header
     const target = document.getElementById('header');
     
     // set up 'typing' effect
-    function type() {
-        if (index < text.length) {
-            target.innerText += text.charAt(index);
+    async function type() {
+        const typingSpeed = 80;
+        const initialDelay = 500;
+        const text = "Rob Farley";
+        let index = 0;
+        await delay(initialDelay);
+        while (index < text.length) {
+            // remove space, previously needed to hold the space
+            if (index == 0) {
+                target.innerText = "R";
+            } else {
+                target.innerText += text.charAt(index);
+            }
+            
             index++;
             const adjustedTypingSpeed = typingSpeed + Math.floor(Math.random() * 25)
-            setTimeout(type, adjustedTypingSpeed)
+            await delay(adjustedTypingSpeed);
         }
     }
 
     // if header exists, type
     if (target) {
-        console.log("'target' found")
-        setTimeout(type, initialDelay)
+        type()
     }
 
     // identify container elements
+    let background = document.getElementById('background');
     let content = document.getElementById('content');
-    let background = document.getElementById('content');
+    let header = document.getElementById('header');
+    let credit = document.getElementById('credit');
     let title = document.getElementById('title');
     let introRow = document.getElementById('introRow');
+    let headerRow = document.getElementById('headerRow');
 
     // identify close button
-    const closeButton = document.getElementById('close')
+    const closeButton = document.getElementById('closeButton')
     if (closeButton) {
-        closeButton.addEventListener('click', function() {
-            // show header
-            const header = document.getElementById('header');
-            header.hidden = false;
-            const credit = document.getElementById('credit');
-            credit.hidden = false;
+        closeButton.addEventListener('click', async function() {
+
+            // hide 'background'
+            background.classList.remove('visible');
+            await delay(250)
+            // remove main content
+            headerRow.classList.remove('d-none');
+            credit.classList.remove('d-none');
+            await delay(100)
+            // show header and credits
+            header.classList.add('show');
+            credit.classList.add('show');
 
             // remove any existing colour classes
             sections.forEach((section) => {
-                if (background.classList.contains(section)) {
-                    background.classList.remove(section);
-                    console.log("class removed: " + section)
+                if (content.classList.contains(section)) {
+                    content.classList.remove(section);
                 }
             })
-
-            // change content class to 'hide'
-            content.classList.remove('show');
-            content.classList.add('hide');
-            console.log("content class: ", content.className)
         })
+    } else {
+        console.log("error: closeButton not found")
     }
     
     // add buttons logic
     const buttons = document.getElementsByName('buttons');
     const sections = ["web", "ios", "data", "about"]
-    if (buttons) {
+    if ((buttons) || (buttons.length != 4)) {
         buttons.forEach((button) => {
 
             // add event listener
             button.addEventListener('click', async function(event) {
 
-                // if 'content' is not showing, take a second to hide main content
-                if (!content.classList.contains('show')) {
-                    // hide title
-                    const header = document.getElementById('header');
-                    header.hidden = true;
-                    const credit = document.getElementById('credit');
-                    credit.hidden = true;
-
-                    // delay by .25 of a second
-                    await delay(250);
+                // -1 if 'blog', then allow to leave the site before doing anything
+                let mode = event.target.innerText.toLowerCase(); // desired mode (eg. "ios" or "web")
+                if (mode == "blog") {
+                    window.open("https://burnt-drug-7f9.notion.site/c4d3ba7118014b468a2016d5ac358d07?v=0b2d953545fb47f29f074afa571ab39c", "_blank");
+                    return;
                 }
 
-                let mode = event.target.innerText.toLowerCase(); // desired mode (eg. "ios" or "web")
+                // 0. hide 'options' menu
+                const options = document.getElementById('options');
+                const bsCollapse = new bootstrap.Collapse(options, {toggle: false});
+                bsCollapse.hide();
+
+                // 1. HIDE MAIN PAGE
+
+                // if 'background' is not already showing, hide the header and credits, before waiting .25 of a second
+                if (background.classList.contains('visible') == false) {
+
+                    // hide header and credits
+                    header.classList.remove('show');
+                    credit.classList.remove('show');
+                    
+                    // remove header and credit
+                    headerRow.classList.add('d-none');
+                    credit.classList.add('d-none');
+                }
+
+                // create space for hidden card, by changing its display
+
+                // 2. PREPARE CONTENT FOR CARD
+
+                
 
                 // remove any existing content
                 introRow.innerHTML = "";
                 title.innerHTML = "";
                 projectRows = document.getElementsByName('projectRow')
-                console.log("projectRows length: " + projectRows.length)
                 while (projectRows.length > 0) {
                     projectRows[0].remove();
                 }
 
                 // remove any existing colour classes
                 sections.forEach((section) => {
-                    if (background.classList.contains(section)) {
-                        background.classList.remove(section);
-                        console.log("class removed: " + section)
+                    if (content.classList.contains(section)) {
+                        content.classList.remove(section);
                     }
                 })
         
                 // add desired color class
-                background.classList.add(mode);
-                console.log("class added: " + mode);
+                content.classList.add(mode);
 
-                // remove 'hide', if present
-                if (content.classList.contains('hide')) {
-                    content.classList.remove('hide');
-                }
-        
-                // set header
+                // set title
                 title.innerText = event.target.innerText;
 
-                // create column
-                const introCol = document.createElement('div')
-                introCol.classList.add('col')
-
-                // set intro
+                // if intro exists, add it
                 const intro = data[mode]['intro'];
                 if (intro) {
+                    // create column
+                    const introCol = document.createElement('div')
+                    introCol.classList.add('col', 'mt-2')
+
+                    // create a <p> for each paragraph in the intro
                     intro.forEach((paragraph) => {
                         let introElement = document.createElement('p');
                         introElement.innerText = paragraph;
                         introCol.append(introElement);
                     })
+
+                    introRow.append(introCol)
                 }
-                
-                introRow.append(introCol)
-                
+                                
                 // if projects exist...
                 if (data[mode]['projects']) {
+
+                    // create and add a 'Projects' title
+                    const projectsTitleRow = document.createElement('div')
+                    projectsTitleRow.classList.add('row', 'd-flex', 'justify-content-center', 'mt-4')
+                    projectsTitleRow.setAttribute('name', 'projectRow')
+                    const projectsTitleCol = document.createElement('div')
+                    projectsTitleCol.classList.add('col')
+                    const projectsTitle = document.createElement('h3')
+                    projectsTitle.innerText = "Projects"
+                    projectsTitleCol.append(projectsTitle)
+                    projectsTitleRow.append(projectsTitleCol)
+                    content.append(projectsTitleRow)
 
                     // set projects
                     data[mode]['projects'].forEach((project) => {
                         // create structure
                         const titleRow = document.createElement('div')
-                        titleRow.classList.add('row', 'd-flex', 'justify-content-start')
+                        titleRow.classList.add('row', 'd-flex', 'justify-content-start', 'mt-2')
                         titleRow.setAttribute('name', 'projectRow')
                         const titleCol = document.createElement('div')
-                        titleCol.classList.add('col-5')
+                        titleCol.classList.add('col-11')
                         const titleElement = document.createElement('h4')
                         titleElement.innerText = project['title']
                         titleCol.append(titleElement)
@@ -154,7 +182,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                             linkCol.classList.add('col-1')
                             const linkIcon = document.createElement('span')
                             linkIcon.innerHTML = `
-                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <svg id="linkIcon" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <!-- First chain link -->
                                     <path 
                                         d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" 
@@ -182,13 +210,13 @@ document.addEventListener('DOMContentLoaded', async function() {
                             titleRow.append(linkCol)
                         }
                         
-                        background.append(titleRow)
+                        content.append(titleRow)
 
                         const contentRow = document.createElement('div')
                         contentRow.setAttribute('name', 'projectRow')
                         contentRow.classList.add('row', 'd-flex', 'justify-content-center')
                         const textCol = document.createElement('div')
-                        textCol.classList.add('col')
+                        textCol.classList.add('col-8')
 
                         // iterate through project paragraphs, creating a <p> for each one
                         project['text'].forEach((paragraph) => {
@@ -233,63 +261,52 @@ document.addEventListener('DOMContentLoaded', async function() {
                             contentRow.append(projectColRight)
                         }
 
-                        background.append(contentRow)
-
+                        content.append(contentRow)
                     })
                 }
-        
-                // if content is not showing, then show it
-                if (!content.classList.contains('show')) {
-                    content.classList.add('show');
-                }  
-                
+
+                await delay(300);
+
+                // 3. SHOW CARD
+                background.classList.add('visible');
             })
         })
+    } else {
+        console.log("error: tab buttons not found")
     }
-
-    // close mobile navbar when a link is clicked
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navbarCollapse = document.getElementById('idOfMainContent');
-    const bsCollapse = new bootstrap.Collapse(navbarCollapse, {toggle: false});
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            // check if the window width is less than Bootstrap's breakpoint for small devices
-            if (window.innerWidth < 576 && navbarCollapse.classList.contains('show')) {
-                bsCollapse.hide();
-            }
-        });
-    });
 });
-    
+ 
 const data = {
     web : {
         intro: ["My first introduction to Web Development was when I took Harvard's CS50 (Introduction to Computer Science) course online in 2022-23. As well as C, this covered Python, HTML, CSS, JavaScript, Flask, and Jinja."],
         projects : [
                 {
-                title : "Roof - web app",
+                title : "Roof (web app)",
                 type : "Web app",
-                techStack : ["Python", "Flask", "Jinja", "Postgres", "Heroku", "RESTful API", "JavaScript", "HTML", "CSS"],
+                techStack : ["Python", "Flask", "Jinja", "Postgres", "Heroku", "JavaScript", "HTML", "CSS"],
                 text : [
                     "While working as an estate agent, I noticed that the information that tenants had about their property and their landlord would be immensely valuable to prospective tenants",
                     "So I created a website called Roof which allowed existing tenants to review their landlords.",
                 ],
                 link : "https://www.rooflondon.uk"
-            }
-        ]     
-    },
-    ios : {
-        intro: ["Swift was the first programming language I learned - during lockdown I started going through Swift Playgrounds, and got hooked"],
-        projects : [
-                {
-                title : "Roof - iOS app",
-                type : "iOS app",
-                techStack : ["Swift", "SwiftUI", "SwiftData", "MapKit"],
+            },
+            {
+                title : "Roof (API)",
+                type : "API",
+                techStack : ["RESTful API", "Python", "Postgres", "Heroku"],
                 text : [
-                    "In 2024, I developed a corresponding iOS app to accompany the Roof website"
+                    "I also created a RESTful API to accompany the Roof website, which allowed for the creation, deletion, and updating of reviews."
+                ],
+            },
+            {
+                title : "Caseworker (web app)",
+                type : "Web app",
+                techStack : ["Go", "TypeScript"],
+                text : [
+                    "In my job as a Caseworker, there are all sorts of improvements that could be made to the way we work. I created a web app to see if I could build an alternative option, while also giving me an opportunity to learn Go and TypeScript for the first time."
                 ]
             }
-        ]   
+        ]     
     },
     data : {
         intro: ["After using Python to do some basic data extraction from our CRM system at work, I began to explore the potential of data analytics. This led to me complete Le Wagon's three-month full time Data Analytics bootcamp from August to November 2024."],
@@ -300,9 +317,30 @@ const data = {
                 techStack : ["Python", "Pandas", "SciKit Learn", "SQL", "BigQuery", "Looker"],
                 text : [
                     "For my final project in the Le Wagon Bootcamp, I teamed up with three other students to create an in-depth analysis of the UK Housing market spanning thirty years.",
-                    "I used SciKit Learn to run a Linear Regression model on Zoopla data from 2022/23 to determine if there were any additional features we should be aware of."
                 ],
                 link : "https://lookerstudio.google.com/s/rMkJOwMPm84"
+            },
+            {
+                title : "Linear Regression of UK House Prices",
+                type : "Google Colab Notebook",
+                techStack : ["Python", "Pandas", "SciKit Learn", "SQL", "BigQuery"],
+                text :[
+                    "In this project, I used SciKit Learn to run a Linear Regression model on Zoopla data from 2022/23 to determine which features had the biggest impact on my target, house prices."
+                ],
+                link : "https://colab.research.google.com/drive/1ajbOpS4G1YdpyVnL798KcpmryosohQmp?usp=sharing"
+            },
+        ]   
+    },
+    ios : {
+        intro: ["Swift was the first programming language I learned - during lockdown I started going through Swift Playgrounds, and got hooked"],
+        projects : [
+                {
+                title : "Roof (iOS app)",
+                type : "iOS app",
+                techStack : ["Swift", "SwiftUI", "SwiftData", "MapKit"],
+                text : [
+                    "In 2024, I developed a corresponding iOS app to accompany the Roof website."
+                ]
             }
         ]   
     },
