@@ -1,160 +1,128 @@
-/* @import url('https://fonts.vercel.com/css2?family=geist'); */
-
-.header {
-    margin-top: 25%;
-    margin-bottom: 25%;
-    white-space: pre;
-    font-size: 64px;
-    letter-spacing: -0.050em; 
-    line-height: 0.75; 
-    text-transform: none; 
-    font-weight: 600;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 /* blueprint lines 
 div {
     outline: 1px;
     outline-style: dashed;
     outline-color: blue;
-} 
-*/
+} */
+#header {
+  /**/
+  margin-top: 25%;
+  margin-bottom: 25%;
+  white-space: pre;
+  font-size: 64px;
+  letter-spacing: -0.05em;
+  line-height: 0.75;
+  text-transform: none;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: opacity 1s ease-in-out;
+}
 
+/*
 button {
     padding-top: 5%;
     padding-bottom: 5%;
 }
-
+*/
 a {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #alternate {
-    font-size: 12px;
-}
-
-.content {
-    position: absolute;
-    will-change: transform, opacity, background-color;
-    color: white;
-    opacity: 0;
-    border-radius: 10px;
-    overflow-y: auto;
-    max-height: calc(100vh - 100px);
-    max-width: 720px;
-
-    top: 95px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    
-    /**/
-
-    height: fit-content;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    justify-self: center;
-    transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.5s ease;
-}
-
-.content.show {
-    transform: translate(-50%, -20px);
-    opacity: 1;
-}
-
-.content.hide {
-    transform: translate(-50%, 20px);
-    opacity: 0;
-}
-
-/*
-@keyframes slideUp {
-    0% {
-        top: 95px;
-        opacity: 0;
-    }
-    100% {
-        top: 75px;
-        opacity: 1;
-    }
-}
-
-@keyframes slideDown {
-    0% {
-        top: 75px;
-        opacity: 1;
-    }
-    100% {
-        top: 95px;
-        opacity: 0;
-    }
-}
-
-
-@media (min-width: 768px) {
-    .content {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-}
-
-@media (max-width: 767px) {
-    .content {
-        top: 95px;
-        left: auto;
-        transform: translateX(-50%);
-    }
-}
-*/
-
-.headline_buttons {
-    border-radius: 10px;
+  font-size: 12px;
 }
 
 .techStack {
-    background-color: rgba(255, 255, 255, 0.25);
-    padding: 6px;
-    margin-right: 8px;
-    margin-bottom: 8px;
-    border-radius: 10px;
-    font-size: smaller;
-}
-
-.icon {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    z-index: 1;
+  background-color: rgba(255, 255, 255, 0.25);
+  padding: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  font-size: smaller;
 }
 
 .web {
-    background-color: #F15353;
+  background-color: #F15353;
 }
 
 .web-button:hover {
-    color: #F15353;
+  color: #F15353;
 }
 
 .ios {
-    background-color: #5ED062;
+  background-color: #5ED062;
 }
 
 .ios-button:hover {
-    color: #5ED062;
+  color: #5ED062;
 }
 
 .data {
-    background-color: #5487EC;
+  background-color: #5487EC;
 }
 
 .data-button:hover {
-    color: #5487EC;
+  color: #5487EC;
+}
+
+.blog-button:hover {
+  color: #FFA500;
 }
 
 .about {
-    background-color: #F6E548;
-    color: black;
+  background-color: #F6E548;
+  color: black;
 }
 
 .about-button:hover {
-    color: #F6E548;
+  color: #F6E548;
 }
+
+.credit {
+  bottom: 0%;
+}
+
+#background {
+  color: white;
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+}
+
+#content {
+  border-radius: 20px;
+  transition: background-color 0.5s ease;
+}
+
+svg {
+  display: block;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  max-width: 24px;
+  max-height: 24px;
+  margin: 0 auto;
+}
+
+.slide-fade {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.slide-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade {
+  opacity: 0;
+}
+
+.fade.show {
+  opacity: 1;
+}
+
+.col-1 {
+  padding: 0;
+  margin: 0;
+}
+
+/*# sourceMappingURL=styles.css.map */
