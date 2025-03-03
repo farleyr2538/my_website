@@ -25,7 +25,7 @@ export const data = {
                 type : "Web app",
                 techStack : ["Go", "TypeScript"],
                 text : [
-                    "In my job as a Caseworker, there are all sorts of improvements that could be made to the way we work. I created a web app to see if I could build an alternative option, while also giving me an opportunity to learn Go and TypeScript for the first time."
+                    "In my job as a Caseworker, I inevitably noticed all sorts of inefficiencies in the software that we use that slow us down in our day-to-day tasks and kill momentum. So I created a web app to see if I could build an alternative option which fixes these problems, and optimises speed, simplicity, and ease-of-use. This project is also giving me an opportunity to learn Go and TypeScript for the first time."
                 ]
             }
         ]     
@@ -68,10 +68,10 @@ export const data = {
     },
     about : {
         intro: [
-            "I started my journey in Computer Science during lockdown, when I went through Apple's Swift Playgrounds.",
-            "Afterwards, I continued to develop my knowledge of software development specifically, learning Web Development and starting to learn Swift.",
+            "My name is Rob. I am interested in software development, web development, data analytics, UK politics, and housing policy.",
+            "I started my journey in Computer Science during lockdown, when I completed Apple's Swift Playgrounds.",
+            "In the years afterwards, I completed Harvard's online CS50 course (Introduction to Computer Science). This offered a fantastic introduction to C, algorithms, and thinking programmatically. I also learned Python, SQL, HTML, CSS, JavaScript, Flask, and Jinja.",
             "In August to November 2024, I completed Le Wagon's full-time Data Analytics Bootcamp. This further refined my SQL and Python, in particular the Pandas library and SciKit Learn for ML.",
-            "Outside of Computer Science, I am interested in a wide variety of topics, including economics, politics, and housing."
-        ]
+            "I am currently working on a web app called Caseworker, which is built using Go and TypeScript.",]
     }
 }
