@@ -1,0 +1,129 @@
+/* blueprint lines 
+div {
+    outline: 1px;
+    outline-style: dashed;
+    outline-color: blue;
+} */
+
+#header {
+    /**/
+    margin-top: 25%;
+    margin-bottom: 25%; 
+    
+    white-space: pre;
+    font-size: 64px;
+    letter-spacing: -0.050em; 
+    line-height: 0.75; 
+    text-transform: none; 
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: opacity 1s ease-in-out;
+}
+
+/*
+button {
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+*/
+
+a {
+    cursor: pointer;
+}
+
+#alternate {
+    font-size: 12px;
+}
+
+.techStack {
+    background-color: rgba(255, 255, 255, 0.25);
+    padding: 6px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    font-size: smaller;
+}
+
+.web {
+    background-color: #F15353;
+}
+
+.web-button:hover {
+    color: #F15353;
+}
+
+.ios {
+    background-color: #5ED062;
+}
+
+.ios-button:hover {
+    color: #5ED062;
+}
+
+.data {
+    background-color: #5487EC;
+}
+
+.data-button:hover {
+    color: #5487EC;
+}
+
+.blog-button:hover {
+    color: #FFA500;
+}
+
+.about {
+    background-color: #F6E548;
+    color: black;
+}
+
+.about-button:hover {
+    color: #F6E548;
+}
+
+.credit {
+    bottom: 0%;
+}
+
+#background {
+    color: white;
+    transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+}
+
+#content {
+    border-radius: 20px;
+    transition: background-color 0.5s ease;
+}
+
+svg {
+    display: block;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    max-width: 24px; 
+    max-height: 24px; 
+    margin: 0 auto; 
+}
+
+.slide-fade {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.slide-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade {
+    opacity: 0;
+}
+
+.fade.show {
+    opacity: 1;
+}
+
+.col-1 {
+    padding: 0;
+    margin: 0;
+}
