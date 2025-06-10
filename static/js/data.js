@@ -27,16 +27,6 @@ export const data = {
     data : {
         intro: ["After using Python to do some basic data extraction from our CRM system at work, I began to explore the potential of data analytics. This led to me complete Le Wagon's three-month full time Data Analytics bootcamp from August to November 2024."],
         projects : [
-            /*{
-                title : "A Deep Dive into the UK Housing Market",
-                type : "Looker",
-                techStack : ["Python", "Pandas", "SciKit Learn", "SQL", "BigQuery", "Looker"],
-                text : [
-                    "For my final project in the Le Wagon Bootcamp, I teamed up with three other students to create an in-depth analysis of the UK Housing market spanning thirty years.",
-                ],
-                link : "https://lookerstudio.google.com/s/rMkJOwMPm84"
-            },
-            */
             {
                 title : "Linear Regression of UK House Prices",
                 year: 2024,
