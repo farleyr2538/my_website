@@ -6,6 +6,7 @@ export const data = {
                 title : "Roof",
                 year: 2023,
                 type : "Web app",
+                status: "shipped",
                 techStack : ["Python", "Flask", "Jinja", "Postgres", "Heroku", "RESTful API", "Python", "Postgres", "Heroku"],
                 text : [
                     "While working as an estate agent, I noticed that the information that tenants had about their property and their landlord would be immensely valuable to prospective tenants",
@@ -17,6 +18,7 @@ export const data = {
             {
                 title : "Caseworker",
                 type : "Web app",
+                status: "work in progress",
                 techStack : ["Go", "TypeScript"],
                 text : [
                     "In my job as a Caseworker, I inevitably noticed all sorts of inefficiencies in the software that we use that slow us down in our day-to-day tasks and kill momentum. So I created a web app to see if I could build an alternative option which fixes these problems, and optimises speed, simplicity, and ease-of-use. This project was a great opportunity to learn Go for the first time."
@@ -31,6 +33,7 @@ export const data = {
                 title : "Linear Regression of UK House Prices",
                 year: 2024,
                 type : "Google Colab Notebook",
+                status: "Complete",
                 techStack : ["Python", "Pandas", "SciKit Learn", "SQL", "BigQuery"],
                 text :[
                     "In this project, I used SciKit Learn to run a Linear Regression model on Zoopla data from 2022/23 to determine which features had the biggest impact on my target, house prices."
@@ -43,10 +46,26 @@ export const data = {
         intro: ["Swift was the first programming language I learned - during lockdown I started going through Swift Playgrounds, and got hooked"],
         projects : [
                 {
+                title : "ScoreTracker",
+                year: 2025,
+                type : "iOS app",
+                status: "shipped",
+                techStack : ["Swift", "SwiftUI", "SwiftData"],
+                text : [
+                    "When I go to visit my in-laws, we love playing this card game called Yaniv.",
+                    "Recently, we found out there is an app for keeping track of scores, specifically for Yaniv.",
+                    "However, we played with some house rules, like halving your score if you hit a multiple of 50, which it did not support.",
+                    "Plus, there were a few issues. For example, the scores were stacked horizontally, with no scrollview, so if you scored too many rounds, they would go off the side of the screen and were not viewable.",
+                    "So I made my own version! I then realised that it could also be used as a score keeper for more or less any card game. I kept the Yaniv-specific features as options that you can toggle when setting up a game."
+                ],
+                link: "https://apps.apple.com/gb/app/cards-scorekeeper/id6748639967"
+            },
+            {
                 title : "Roof",
                 year: 2024,
                 type : "iOS app",
-                techStack : ["Swift", "SwiftUI", "SwiftData", "MapKit"],
+                status: "work in progress",
+                techStack : ["Swift", "SwiftUI", "MapKit"],
                 text : [
                     "In 2024, I developed a corresponding iOS app to accompany the Roof website."
                 ]
@@ -55,6 +74,7 @@ export const data = {
                 title : "Poke the Mango",
                 year: 2025,
                 type : "iOS game",
+                status: "work in progress",
                 techStack : ["Swift", "SwiftUI", "SpriteKit"],
                 text: [
                     "The inspiration for this game was a game of the same name which I found years ago which was so simple it was funny.",
@@ -68,10 +88,12 @@ export const data = {
                 title: "Habit Tracker",
                 year: 2025,
                 type: "iOS app",
+                status: "work in progress",
                 techStack: ["Swift", "SwiftUI", "SwiftData"],
                 text: [
                     "I liked the habit trackers that were available on the App Store, but I found them too complex and cluttered.",
-                    "Fully aware that it is a crowded market, I decided to create my own version of a habit tracker, just as much for myself as for anyone else."
+                    "Fully aware that it is a crowded market, I decided to create my own version of a habit tracker, just as much for myself as for anyone else.",
+                    "All I wanted was the 'GitHub' view without having to pay a monthly subscription."
                 ]
             }
         ]   
