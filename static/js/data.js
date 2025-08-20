@@ -7,13 +7,27 @@ export const data = {
                 year: 2023,
                 type : "Web app",
                 status: "shipped",
-                techStack : ["Python", "Flask", "Jinja", "Postgres", "Heroku", "RESTful API", "Python", "Postgres", "Heroku"],
+                techStack : ["Python", "Flask", "Javascript", "Jinja", "Heroku", "RESTful API", "Postgres"],
                 text : [
                     "While working as an estate agent, I noticed that the information that tenants had about their property and their landlord would be immensely valuable to prospective tenants",
                     "So I created a website called Roof which allowed existing tenants to review their landlords.",
                     "This involved building a RESTful API to accompany the Roof website, which allowed for the creation, deletion, and updating of reviews."
                 ],
                 link : "https://www.rooflondon.uk"
+            },
+            {
+                title : "Tax Calculator",
+                year: 2024,
+                type : "Web app",
+                status: "live",
+                techStack : ["Python", "Flask", "Javascript", "Heroku"],
+                text : [
+                    "I use a web-based tax calculator semi-regularly. I am always surprised by its outdated design and constant advertising.",
+                    "I was also aware that, as noted by the IFS, people often think of their tax rate as solely the income tax band they are in. However, you must consider both of our incomes taxes - Income Tax and National Insurance - together in order to accurately understand how much tax you are paying.",
+                    "So I built an extremely simple alternative. All it seeks to do is inform users how much tax they pay on their income each year, so that people can compare it to their gross income, and understand their real tax rate",
+                    "After doing this, I decided to include VAT, based on how much the user spends on different VAT banded products."
+                ],
+                link : "https://young-castle-54837-4e9694179560.herokuapp.com"
             },
             {
                 title : "Caseworker",
@@ -46,7 +60,7 @@ export const data = {
         intro: ["Swift was the first programming language I learned - during lockdown I started going through Swift Playgrounds, and got hooked"],
         projects : [
                 {
-                title : "ScoreTracker",
+                title : "ScoreKeeper",
                 year: 2025,
                 type : "iOS app",
                 status: "shipped",
@@ -54,7 +68,7 @@ export const data = {
                 text : [
                     "When I go to visit my in-laws, we love playing this card game called Yaniv.",
                     "Recently, we found out there is an app for keeping track of scores, specifically for Yaniv.",
-                    "However, we played with some house rules, like halving your score if you hit a multiple of 50, which it did not support.",
+                    "However, we play with some house rules, like halving your score if you hit a multiple of 50, which it did not support.",
                     "Plus, there were a few issues. For example, the scores were stacked horizontally, with no scrollview, so if you scored too many rounds, they would go off the side of the screen and were not viewable.",
                     "So I made my own version! I then realised that it could also be used as a score keeper for more or less any card game. I kept the Yaniv-specific features as options that you can toggle when setting up a game."
                 ],
