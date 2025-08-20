@@ -44,10 +44,23 @@ export const data = {
         intro: ["After using Python to do some basic data extraction from our CRM system at work, I began to explore the potential of data analytics. This led to me complete Le Wagon's three-month full time Data Analytics bootcamp from August to November 2024."],
         projects : [
             {
+                title: "Assessing the Government's Housing Building target of 1.5 million homes",
+                year: 2025,
+                type: "Google Colab Notebook",
+                status: "complete",
+                techStack: ["Python", "Pandas", "Plotly"],
+                text: [
+                    "For a job interview, I was asked to look into whether the Government would hit its target of building 1.5 million homes over the course of a Parliament.",
+                    "I completed it as a written task, but it got me thinking. I started doing calculations, and eventually started this notebook to play around with the numbers required, and compare them to historical data.",
+                    "I concluded the Government would not hit their target, and would be closer to 1,304,000. Safe to say, even this would require a rapid increase, which currently does not seem to be materialising."
+                ],
+                link: "https://colab.research.google.com/drive/1RQb5PStuEYHCl6BaDeFsNdXLOFvasVpF?usp=sharing"
+            },
+            {
                 title : "Linear Regression of UK House Prices",
                 year: 2024,
                 type : "Google Colab Notebook",
-                status: "Complete",
+                status: "complete",
                 techStack : ["Python", "Pandas", "SciKit Learn", "SQL", "BigQuery"],
                 text :[
                     "In this project, I used SciKit Learn to run a Linear Regression model on Zoopla data from 2022/23 to determine which features had the biggest impact on my target, house prices."
