@@ -29,7 +29,7 @@ export const data = {
                 ],
                 link : "https://young-castle-54837-4e9694179560.herokuapp.com"
             },
-            {
+            /* {
                 title : "Caseworker",
                 type : "Web app",
                 status: "work in progress",
@@ -38,6 +38,7 @@ export const data = {
                     "In my job as a Caseworker, I inevitably noticed all sorts of inefficiencies in the software that we use that slow us down in our day-to-day tasks and kill momentum. So I created a web app to see if I could build an alternative option which fixes these problems, and optimises speed, simplicity, and ease-of-use. This project was a great opportunity to learn Go for the first time."
                 ]
             }
+            */
         ]     
     },
     data : {
@@ -50,8 +51,7 @@ export const data = {
                 status: "complete",
                 techStack: ["Python", "Pandas", "Plotly"],
                 text: [
-                    "For a job interview, I was asked to look into whether the Government would hit its target of building 1.5 million homes over the course of a Parliament.",
-                    "I completed it as a written task, but it got me thinking. I started doing calculations, and eventually started this notebook to play around with the numbers required, and compare them to historical data.",
+                    "I was recently asked to look into whether the Government would hit its target of building 1.5 million homes over the course of a Parliament.",
                     "I concluded the Government would not hit their target, and would be closer to 1,304,000. Safe to say, even this would require a rapid increase, which currently does not seem to be materialising."
                 ],
                 link: "https://colab.research.google.com/drive/1RQb5PStuEYHCl6BaDeFsNdXLOFvasVpF?usp=sharing"
@@ -95,7 +95,8 @@ export const data = {
                 techStack : ["Swift", "SwiftUI", "MapKit"],
                 text : [
                     "In 2024, I developed a corresponding iOS app to accompany the Roof website."
-                ]
+                ],
+                link: "https://apps.apple.com/us/app/roof/id6751748494"
             },
             {
                 title : "Poke the Mango",
@@ -110,7 +111,8 @@ export const data = {
                     "However, we found that she could not find the game on the App Store: it had been removed.",
                     "So I decided to create another version of the game, so she could play it again.",
                 ]
-            },
+            }
+            /*,
             {
                 title: "Habit Tracker",
                 year: 2025,
@@ -123,6 +125,7 @@ export const data = {
                     "All I wanted was the 'GitHub' view without having to pay a monthly subscription."
                 ]
             }
+            */
         ]   
     },
     about : {
